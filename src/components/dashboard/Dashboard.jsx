@@ -53,7 +53,7 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div className="grid grid-cols-6 w-screen">
+      <div className="grid grid-cols-8 w-screen overflow-hidden">
         <div className="col-span-1 bg-secondary shadow-2xl">
           <div className="h-screen">
             <Menu
@@ -63,7 +63,7 @@ class Dashboard extends Component {
             />
           </div>
         </div>
-        <div className="col-span-5 bg-gray-100">{this.handleViews()}</div>
+        <div className="col-span-7 bg-gray-100 h-screen">{this.handleViews()}</div>
       </div>
     );
   }

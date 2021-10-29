@@ -183,30 +183,6 @@ class PaiementInfos extends Component {
               </tr>
             </tbody>
           </table>
-          <div className="grid grid-cols-2 p-2">
-            <div className="flex w-full justify-center items-center">
-              <input
-                type="radio"
-                name="paiementMode"
-                checked={this.state.payement === "COD"}
-                onChange={() => {
-                  this.setState({ payement: "COD" });
-                }}
-              />
-              <label>Paiement à la livraison</label>
-            </div>
-            <div className="flex w-full justify-center items-center">
-              <input
-                type="radio"
-                name="paiementMode"
-                checked={this.state.payement === "CBC"}
-                onChange={() => {
-                  this.setState({ payement: "CBC" });
-                }}
-              />
-              <label>Paiement par carte</label>
-            </div>
-          </div>
           {this.handleCardInput()}
 
           <button

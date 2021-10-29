@@ -105,7 +105,7 @@ class FacturesDash extends Component {
   render() {
     return (
       <div>
-        <div className="m-5 rounded-xl border bg-white shadow-2xl">
+        <div className="m-5 rounded-xl border bg-white shadow-2xl max-h-full overflow-auto">
           <div className="flex items-center bg-primary rounded-xl p-5 shadow-2xl text-white font-bold w-full">
             <div className="">Commandes</div>
           </div>
@@ -118,6 +118,7 @@ class FacturesDash extends Component {
                   <th>Nombre d'article</th>
                   <th>Etat</th>
                   <th>Totale</th>
+                  <th>Client</th>
                   <th>Date de commande</th>
                   <th>Détails</th>
                 </tr>

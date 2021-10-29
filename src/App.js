@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
+import GeneralInfos from "./components/GeneralInfos";
 import SearchProduct from "./components/searchPageComponents/SearchProduct";
 import ProduitPage from "./components/produitPage/ProduitPage";
 import Cart from "./components/cart/Cart";
@@ -390,6 +391,10 @@ class App extends Component {
                   addProduitToCommande={this.addProduitToCommande}
                   removeProduitFromCommande={this.removeProduitFromCommande}
                 />
+              </Route>
+              
+              <Route path="/infos_generales" exact>
+                <GeneralInfos />
               </Route>
               
               <Route path="/reset_password" exact>

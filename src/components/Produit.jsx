@@ -33,7 +33,6 @@ class Produit extends Component {
     if (this.state.isLoaded) {
       return (
         <div
-          id="produitCart"
           className={
             "border-2 rounded-xl m-3" +
             (this.props.inCart
@@ -191,10 +190,8 @@ class Produit extends Component {
     } else {
       table.push(
         <span
-          className={
-            "text-xl font-bold" +
-            (this.props.inCart ? " text-third" : " text-primary")
-          }
+          className="text-xl font-bold text-gray-700"
+          
         >
           {Math.floor(produit.prixProduit)}
           <sup>

@@ -134,7 +134,7 @@ class AdminsDash extends Component {
       render() {
         return (
           <div>
-            <div className="m-5 rounded-xl border bg-white shadow-2xl">
+            <div className="m-5 rounded-xl border bg-white shadow-2xl max-h-full overflow-auto">
               <div className="flex items-center bg-primary rounded-xl p-5 shadow-2xl text-white font-bold w-full">
                 <div className="">Admins</div>
                 <div className="w-full flex justify-end space-x-4">

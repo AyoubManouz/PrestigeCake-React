@@ -25,6 +25,7 @@ class FactureDash extends Component {
         <td>{this.state.facture.commande.produits.length}</td>
         <td>{this.showEtat()}</td>
         <td>{this.state.facture.totalFacture}&nbsp;DH</td>
+        <td>{this.state.facture.livraison.nomLivraison + " " + this.state.facture.livraison.prenomLivraison}</td>
         <td>{this.state.facture.livraison.created_at.substring(0, 10)}</td>
         <td>
           <EditFacture
