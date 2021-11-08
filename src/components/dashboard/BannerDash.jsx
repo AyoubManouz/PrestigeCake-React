@@ -73,7 +73,7 @@ class BannerDash extends Component {
                 <img
                   className="h-24"
                   src={
-                    "http://localhost:8000/" + this.state.banner.image
+                    this.props.imgPrefix + this.state.banner.image
                   }
                 />
               </div>

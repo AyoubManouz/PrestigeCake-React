@@ -16,7 +16,6 @@ class DescriptionPage extends Component {
   };
 
   render() {
-    console.log(this.props.description);
     return (
       <div className="w-full mt-10">
         <div className="px-2">

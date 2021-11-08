@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BiDetail } from "react-icons/bi";
 import { FaTimesCircle } from "react-icons/fa";
 import Popup from "reactjs-popup";
+import Axios from "../../Axios";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import "reactjs-popup/dist/index.css";
@@ -20,17 +21,16 @@ class EditProduitDash extends Component {
   }
 
   componentWillMount() {
-    fetch("http://127.0.0.1:8000/api/products/create")
-      .then((res) => res.json())
+    Axios.get("/products/create")
       .then((result) => {
         let images = [];
         this.props.produit.images.map((image) => {
           if (image.is_principal != 1)
-            images.push("http://localhost:8000/" + image.image_content);
+            images.push(this.props.imgPrefix + image.image_content);
         });
 
         let principal_img =
-          "http://localhost:8000/" +
+          this.props.imgPrefix +
           this.props.produit.images.filter(
             (image) => image.is_principal == 1
           )[0].image_content;
@@ -39,8 +39,8 @@ class EditProduitDash extends Component {
         produit.images = [];
         produit.principal_img = "";
 
-        let promotions = [...result.promotions];
-        let categories = [...result.categories];
+        let promotions = [...result.data.promotions];
+        let categories = [...result.data.categories];
         this.setState({
           images: images,
           principal_img: principal_img,
@@ -48,6 +48,10 @@ class EditProduitDash extends Component {
           categories: categories,
           isLoaded: true,
         });
+      })
+      .catch((errors) => {
+        console.log("errors");
+        console.log(errors);
       });
   }
 
@@ -193,13 +197,13 @@ class EditProduitDash extends Component {
   //   let images = [];
   //   this.props.produit.images.map((image) => {
   //     if (image.is_principal != 1)
-  //       images.push("http://localhost:8000/" + image.image_content);
+  //       images.push(this.props.imgPrefix + image.image_content);
   //   });
 
   //   let principal_img = "";
   //   if (this.props.produit.images != []) {
   //     principal_img =
-  //       "http://localhost:8000/" +
+  //       this.props.imgPrefix +
   //       this.props.produit.images.filter((image) => image.is_principal == 1)[0]
   //         .image_content;
   //   }

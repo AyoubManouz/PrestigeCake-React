@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Loader from "react-loader-spinner";
+import Axios from "../../Axios";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 var Carousel = require("react-responsive-carousel").Carousel;
@@ -11,13 +12,16 @@ class UpperHomeBanner extends Component {
   };
 
   componentWillMount() {
-    fetch("http://127.0.0.1:8000/api/banner")
-      .then((res) => res.json())
+    Axios.get("/banner")
       .then((result) => {
         this.setState({
-          banners: result.banners,
+          banners: result.data.banners,
           isLoaded: true,
         });
+      })
+      .catch((errors) => {
+        console.log("errors");
+        console.log(errors);
       });
   }
 
@@ -38,7 +42,7 @@ class UpperHomeBanner extends Component {
           {this.state.banners.map((banner) => {
             return (
               <div className="w-full">
-                <img src={"http://localhost:8000/" + banner.image} className="w-full object-cover" alt="" />
+                <img src={this.props.imgPrefix + banner.image} className="w-full object-cover" alt="" />
               </div>
             );
           })}

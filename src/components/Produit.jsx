@@ -72,7 +72,7 @@ class Produit extends Component {
                     (this.props.inCart ? " border-third" : " border-primary")
                   }
                   src={
-                    "http://localhost:8000/" +
+                    this.props.imgPrefix +
                     this.props.produit.images[0].image_content
                   }
                   alt=""

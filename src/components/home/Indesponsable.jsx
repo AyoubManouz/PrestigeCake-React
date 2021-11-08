@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Loader from "react-loader-spinner";
+import Axios from "../../Axios";
 
 class Indesponsable extends Component {
   state = {
@@ -8,15 +9,16 @@ class Indesponsable extends Component {
   };
 
   uploadCategories = () => {
-    fetch("http://127.0.0.1:8000/api/indesponsable")
-      .then((res) => res.json())
+    Axios.get("/indesponsable")
       .then((result) => {
-        console.log("result");
-        console.log(result.produits);
         this.setState({
-          produits: result.produits,
+          produits: result.data.produits,
           isLoaded: true,
         });
+      })
+      .catch((errors) => {
+        console.log("errors");
+        console.log(errors);
       });
   };
 
@@ -38,7 +40,7 @@ class Indesponsable extends Component {
                         <img
                           className="rounded-lg border-2 rounded border-primary"
                           src={
-                            "http://localhost:8000/" +
+                            this.props.imgPrefix +
                             produit.images[0].image_content
                           }
                           alt=""

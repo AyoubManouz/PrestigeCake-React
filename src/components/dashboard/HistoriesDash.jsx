@@ -75,6 +75,7 @@ class HistoriesDash extends Component {
             return (
               <FactureDash
                 key={facture.id}
+                imgPrefix = {this.props.imgPrefix}
                 facture={facture}
                 changeCommande={this.handleChangeCommande}
               />

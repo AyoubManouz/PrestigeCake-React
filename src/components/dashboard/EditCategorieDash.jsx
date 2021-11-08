@@ -9,7 +9,7 @@ class EditCategorieDash extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: "http://localhost:8000/" + this.props.categorie.image_content,
+      image: this.props.imgPrefix + this.props.categorie.image_content,
       categorie: props.categorie,
     };
   }

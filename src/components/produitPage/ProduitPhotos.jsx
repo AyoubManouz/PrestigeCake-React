@@ -24,7 +24,6 @@ class ProduitPhotos extends Component {
   }
 
   ringSelectedPic(event) {
-    console.log(event.target.classList);
     event.target.classList =
       this.classlist + "rounded-lg p-1 ring ring-primary";
   }
@@ -51,7 +50,7 @@ class ProduitPhotos extends Component {
         onClick={() => this.clickHandler(imgUrl, i)}
       >
         <img
-          src={"http://localhost:8000/" + imgUrl.image_content}
+          src={this.props.imgPrefix + imgUrl.image_content}
           className={
             "h-16 mx-2 border border-primary p-1 rounded-lg " +
             (this.state.tables[i].isClicked ? "ring-1 ring-primary" : "")
@@ -88,7 +87,7 @@ class ProduitPhotos extends Component {
               <img
                 id="imgProduit"
                 src={
-                  "http://localhost:8000/" +
+                  this.props.imgPrefix +
                   this.state.images[this.currentIndex].image_content
                 }
                 className="h-64"

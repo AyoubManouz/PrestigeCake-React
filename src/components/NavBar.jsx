@@ -27,7 +27,7 @@ function NavBar(props) {
 
       <div className="flex text-third items-center justify-center bg-secondary">
         <h6 className="py-1 mx-1 text-center text-xs md:text-base">
-          Bienvenue dans la cuisine de Prestige Cake ! Ici, vous Profiterez des
+          Bienvenue dans la cuisine de Monde des Gateaux ! Ici, vous Profiterez des
           Promos à partir de -25%
         </h6>
       </div>

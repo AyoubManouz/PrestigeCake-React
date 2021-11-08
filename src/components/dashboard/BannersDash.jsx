@@ -16,14 +16,17 @@ class BannersDash extends Component {
       }
     
       uploadBanners = () => {
-        fetch("http://127.0.0.1:8000/api/banner")
-          .then((res) => res.json())
-          .then((result) => {
-            this.setState({
-              banners: result.banners,
-              isLoaded: true,
-            });
+        Axios.get("/banner")
+        .then((result) => {
+          this.setState({
+            banners: result.data.banners,
+            isLoaded: true,
           });
+        })
+        .catch((errors) => {
+          console.log("errors");
+          console.log(errors);
+        });
       };
     
       componentWillMount() {
@@ -124,6 +127,7 @@ class BannersDash extends Component {
               {this.state.banners.map((banner) => {
                 return (
                   <BannerDash
+                    imgPrefix = {this.props.imgPrefix}
                     key={banner.id}
                     banner={banner}
                     changeBanner={this.handleChangeBanner}

@@ -23,6 +23,7 @@ class TopPromotions extends Component {
         </div>
 
         <TopVentesProduits
+          imgPrefix = {this.props.imgPrefix}
           produits={this.state.produits}
           produitsCommande={this.props.produitsCommande}
           addProduitToCommande={this.props.addProduitToCommande}

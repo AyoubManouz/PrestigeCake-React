@@ -7,7 +7,7 @@ class GeneralInfos extends Component {
             <div id="about">
                 <div className="font-mono text-left w-full whitespace-pre-wrap text-justify">
                     <h1 className="font-bold italic text-primary" >Qui sommes-nous ?</h1>
-                    Bienvenue dans Prestige cake la boutique en ligne N°1 au Maroc pour les amoureux de cake design ! Ici, vous trouverez des ustensiles pour réaliser tous vos gâteaux. <br />
+                    Bienvenue dans Monde des Gateaux la boutique en ligne N°1 au Maroc pour les amoureux de cake design ! Ici, vous trouverez des ustensiles pour réaliser tous vos gâteaux. <br />
                     Fondée par une passionnée du cake design, de rendre le matériel pour pâtisserie accessible via internet au plus grand nombre. <br />
                     Grâce à notre site accessible à tous et facile d’utilisation, retrouvez les meilleurs articles, pas cher et de qualité professionnelle : <br />
                     Pâte à sucre, moules à gâteaux, colorant alimentaire, cake board, boîtes à gâteaux,… aussi des articles de fête pour la décoration d’anniversaire, de mariage ou baby-shower… <br />

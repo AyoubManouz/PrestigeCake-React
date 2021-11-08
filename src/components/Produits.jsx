@@ -23,6 +23,7 @@ class Produits extends Component {
                 <Produit
                   key={produit.id}
                   produit={produit}
+                  imgPrefix = {this.props.imgPrefix}
                   inCart={this.checkInCart(produit)}
                   changeProduit={this.props.changeProduit}
                   addProduitToCommande={this.props.addProduitToCommande}

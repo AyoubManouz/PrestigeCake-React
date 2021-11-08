@@ -28,7 +28,6 @@ class AddPromoDash extends Component {
   };
 
   render() {
-    console.log(this.state.newPromo.dateFinPromo);
     return (
       <Popup
         trigger={
@@ -63,7 +62,6 @@ class AddPromoDash extends Component {
                       <textarea
                         id="descPromo"
                         onChange={(e) => {
-                          console.log("e.value =" + e.target.value);
                           let newPromo = this.state.newPromo;
                           newPromo.descPromo = e.target.value;
                           this.setState({ newPromo });
@@ -123,7 +121,6 @@ class AddPromoDash extends Component {
               <button
                 className="btn rounded-lg py-1 px-3 text-white bg-red-500 hover:text-red-500 hover:bg-white border hover:border-red-500 mx-5 focus:outline-none"
                 onClick={() => {
-                  console.log("modal closed ");
                   this.initializePromo();
                   close();
                 }}

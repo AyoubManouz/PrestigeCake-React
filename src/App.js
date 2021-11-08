@@ -37,6 +37,7 @@ class App extends Component {
         produits: [],
       },
       registeredUser: null,
+      imgPrefix: "http://localhost:8000/"
     };
   }
 
@@ -260,6 +261,7 @@ class App extends Component {
       return (
         <Cart
           user={this.state.user}
+          imgPrefix = {this.state.imgPrefix}
           commande={this.state.commande}
           addProduitToCommande={this.addProduitToCommande}
           removeProduitFromCommande={this.removeProduitFromCommande}
@@ -357,6 +359,7 @@ class App extends Component {
                 pauseOnHover
               />
               <Dashboard
+                imgPrefix = {this.state.imgPrefix}
                 RedirectVersAcceuil={this.RedirectVersAcceuil}
                 logoutUser={this.handleLogoutUser}
                 user={this.state.user}
@@ -388,6 +391,7 @@ class App extends Component {
                 <Home
                   user={this.state.user}
                   commande={this.state.commande}
+                  imgPrefix = {this.state.imgPrefix}
                   addProduitToCommande={this.addProduitToCommande}
                   removeProduitFromCommande={this.removeProduitFromCommande}
                 />
@@ -409,6 +413,7 @@ class App extends Component {
                 <ProduitPage
                   user={this.state.user}
                   commande={this.state.commande}
+                  imgPrefix = {this.state.imgPrefix}
                   addProduitToCommande={this.addProduitToCommande}
                   removeProduitFromCommande={this.removeProduitFromCommande}
                 />
@@ -418,6 +423,7 @@ class App extends Component {
                 <SearchProduct
                   user={this.state.user}
                   commande={this.state.commande}
+                  imgPrefix = {this.state.imgPrefix}
                   addProduitToCommande={this.addProduitToCommande}
                   removeProduitFromCommande={this.removeProduitFromCommande}
                 />
@@ -425,6 +431,7 @@ class App extends Component {
 
               <Route path="/Categories" exact component={CategoriesBanner}>
                 <CategoriesBanner
+                  imgPrefix = {this.state.imgPrefix}
                   user={this.state.user}
                   commande={this.state.commande}
                   addProduitToCommande={this.addProduitToCommande}
@@ -445,7 +452,7 @@ class App extends Component {
               </Route>
               
               <Route path="/track" exact>
-                <CommandesTraking user={this.state.user} />
+                <CommandesTraking imgPrefix = {this.state.imgPrefix} user={this.state.user} />
               </Route>
 
               <Footer />

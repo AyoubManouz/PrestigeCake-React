@@ -72,7 +72,7 @@ class ProduitDash extends Component {
       return (
         <img
           src={
-            "http://localhost:8000/" +
+            this.props.imgPrefix +
             this.state.produit.images[0].image_content
           }
           className="h-16"
@@ -95,6 +95,7 @@ class ProduitDash extends Component {
         <td>{this.state.produit.stockProduit}</td>
         <td>
           <EditProduitDash
+            imgPrefix = {this.props.imgPrefix}
             produit={this.state.produit}
             changeProduit={this.props.changeProduit}
           />

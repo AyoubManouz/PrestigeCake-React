@@ -27,6 +27,7 @@ class CommandeDash extends Component {
         <td>{this.state.facture.livraison.created_at.substring(0, 10)}</td>
         <td>
           <EditCommande
+            imgPrefix = {this.props.imgPrefix}
             facture={this.state.facture}
             changeCommande={this.props.changeCommande}
           />

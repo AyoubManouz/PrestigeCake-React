@@ -7,6 +7,7 @@ import { Dropdown } from "semantic-ui-react";
 import "react-dropdown/style.css";
 import "reactjs-popup/dist/index.css";
 import "semantic-ui-css/semantic.min.css";
+import Axios from "../../Axios";
 
 class AddProduitDash extends Component {
   state = {
@@ -48,16 +49,19 @@ class AddProduitDash extends Component {
   };
 
   componentWillMount() {
-    fetch("http://127.0.0.1:8000/api/products/create")
-      .then((res) => res.json())
+    Axios.get("/products/create")
       .then((result) => {
-        let promotions = [...result.promotions];
-        let categories = [...result.categories];
+        let promotions = [...result.data.promotions];
+        let categories = [...result.data.categories];
         this.setState({
           promotions: promotions,
           categories: categories,
           isLoaded: true,
         });
+      })
+      .catch((errors) => {
+        console.log("errors");
+        console.log(errors);
       });
   }
 
@@ -202,7 +206,6 @@ class AddProduitDash extends Component {
 
   render() {
     const { currentValue } = this.state;
-    console.log(this.state.newProduit);
     return (
       <Popup
         trigger={
@@ -238,7 +241,6 @@ class AddProduitDash extends Component {
                         id="reference"
                         type="text"
                         onChange={(e) => {
-                          console.log("e.value =" + e.target.value);
                           let newProduit = this.state.newProduit;
                           newProduit.reference = e.target.value;
                           this.setState({ newProduit });
@@ -254,7 +256,6 @@ class AddProduitDash extends Component {
                         id="titreProduit"
                         type="text"
                         onChange={(e) => {
-                          console.log("e.value =" + e.target.value);
                           let newProduit = this.state.newProduit;
                           newProduit.titre = e.target.value;
                           this.setState({ newProduit });
@@ -269,7 +270,6 @@ class AddProduitDash extends Component {
                       <textarea
                         id="descreptionProduit"
                         onChange={(e) => {
-                          console.log("e.value =" + e.target.value);
                           let newProduit = this.state.newProduit;
                           newProduit.description = e.target.value;
                           this.setState({ newProduit });
@@ -285,7 +285,6 @@ class AddProduitDash extends Component {
                         id="stockProduit"
                         type="text"
                         onChange={(e) => {
-                          console.log("e.value =" + e.target.value);
                           let newProduit = this.state.newProduit;
                           newProduit.stock = parseInt(e.target.value);
                           this.setState({ newProduit });
@@ -505,7 +504,6 @@ class AddProduitDash extends Component {
               <button
                 className="btn rounded-lg py-1 px-3 text-white bg-red-500 hover:text-red-500 hover:bg-white border hover:border-red-500 mx-5 focus:outline-none"
                 onClick={() => {
-                  console.log("modal closed ");
                   this.initializeProduit();
                   close();
                 }}

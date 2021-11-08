@@ -75,7 +75,7 @@ class CategorieDash extends Component {
             <img
               className="h-16"
               src={
-                "http://localhost:8000/" + this.props.categorie.image_content
+                this.props.imgPrefix + this.props.categorie.image_content
               }
             />
           </div>
@@ -83,6 +83,7 @@ class CategorieDash extends Component {
         <td>{this.props.categorie.libelleCategorie}</td>
         <td>
           <EditCategorieDash
+            imgPrefix = {this.props.imgPrefix}
             categorie={this.props.categorie}
             changecategorie={this.props.changecategorie}
           />

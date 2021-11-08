@@ -48,7 +48,6 @@ class ProduitCart extends Component {
             <button
               className="btn rounded-lg py-1 px-3 text-white bg-red-500 hover:text-red-500 hover:bg-white border hover:border-red-500 mx-5 focus:outline-none"
               onClick={() => {
-                console.log("modal closed ");
                 close();
               }}
             >
@@ -66,7 +65,7 @@ class ProduitCart extends Component {
         <div className="h-16 w-32 mx-2">
           <img
             src={
-              "http://localhost:8000/" +
+              this.props.imgPrefix +
               this.state.produit.images[0].image_content
             }
             className="h-16"

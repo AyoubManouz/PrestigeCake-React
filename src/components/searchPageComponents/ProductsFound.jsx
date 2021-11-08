@@ -61,6 +61,7 @@ export class ProductsFound extends Component {
       table.push(
         <Produits
           produits={products}
+          imgPrefix = {this.props.imgPrefix}
           changeProduit={this.props.changeProduit}
           produitsCommande={this.props.produitsCommande}
           addProduitToCommande={this.props.addProduitToCommande}

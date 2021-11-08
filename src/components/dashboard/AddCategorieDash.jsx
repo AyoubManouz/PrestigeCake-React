@@ -127,7 +127,6 @@ class AddCategorieDash extends Component {
               <button
                 className="btn rounded-lg py-1 px-3 text-white bg-red-500 hover:text-red-500 hover:bg-white border hover:border-red-500 mx-5 focus:outline-none"
                 onClick={() => {
-                  console.log("modal closed ");
                   this.initializeCategorie();
                   close();
                 }}

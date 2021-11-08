@@ -127,6 +127,7 @@ class SearchProduct extends Component {
       return (
         <ProductsFound
           produits={this.state.produitsFiltre}
+          imgPrefix = {this.props.imgPrefix}
           changeProduit={this.handleChangeProduit}
           En_Stock={this.state.En_Stock}
           promotions={this.state.promotions}

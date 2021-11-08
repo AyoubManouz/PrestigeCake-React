@@ -29,19 +29,19 @@ class Dashboard extends Component {
     if (this.state.choosenView == 0) {
       return <HomeDash />;
     } else if (this.state.choosenView == 1) {
-      return <BannersDash />;
+      return <BannersDash imgPrefix = {this.props.imgPrefix} />;
     } else if (this.state.choosenView == 2) {
-      return <ProduitsDash />;
+      return <ProduitsDash imgPrefix = {this.props.imgPrefix} />;
     } else if (this.state.choosenView == 3) {
-      return <PromotionsDash />;
+      return <PromotionsDash imgPrefix = {this.props.imgPrefix} />;
     } else if (this.state.choosenView == 4) {
-      return <CategoriesDash />;
+      return <CategoriesDash imgPrefix = {this.props.imgPrefix} />;
     } else if (this.state.choosenView == 5) {
-      return <CommandesDash />;
+      return <CommandesDash imgPrefix = {this.props.imgPrefix} />;
     } else if (this.state.choosenView == 6) {
-      return <FacturesDash />;
+      return <FacturesDash imgPrefix = {this.props.imgPrefix} />;
     } else if (this.state.choosenView == 7) {
-      return <HistoriesDash />;
+      return <HistoriesDash imgPrefix = {this.props.imgPrefix} />;
     } else if (this.state.choosenView == 8) {
       return <AdminsDash />;
     } else if (this.state.choosenView == 9) {

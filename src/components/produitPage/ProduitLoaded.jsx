@@ -78,7 +78,7 @@ class ProduitLoaded extends Component {
         <div className="w-auto xl:px-32 md:px-20 mx-auto mt-10">
           <div className="grid w-full lg:grid-cols-2">
             <div className="lg:col-span-1">
-              <ProduitPhotos images={this.state.produit.images} />
+              <ProduitPhotos imgPrefix = {this.props.imgPrefix} images={this.props.produit.images} />
             </div>
 
             <div className="lg:col-span-1">

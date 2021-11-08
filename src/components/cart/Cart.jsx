@@ -78,6 +78,7 @@ class Cart extends Component {
                 Produits
               </div>
               <ProduitsCart
+                imgPrefix={this.props.imgPrefix}
                 produits={this.state.produits}
                 editProduit={this.handleEditProduit}
                 deleteProduit={this.handleDeleteProduit}

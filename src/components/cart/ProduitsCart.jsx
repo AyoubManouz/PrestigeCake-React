@@ -13,6 +13,7 @@ class ProduitsCart extends Component {
         {this.state.produits.map((produit) => {
           return (
             <ProduitCart
+              imgPrefix={this.props.imgPrefix}
               key={produit.id}
               produit={produit}
               editProduit={this.props.editProduit}

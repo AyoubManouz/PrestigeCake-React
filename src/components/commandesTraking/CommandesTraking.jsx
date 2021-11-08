@@ -45,7 +45,7 @@ class CommandesTraking extends Component {
             return (
                 <div>
                     {this.state.factures.map((facture) => {
-                        return <CommandeTraking key={facture.id} facture={facture} />
+                        return <CommandeTraking imgPrefix = {this.props.imgPrefix} key={facture.id} facture={facture} />
                     })}
                 </div>
             );

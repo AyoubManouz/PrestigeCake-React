@@ -20,24 +20,27 @@ class ProduitsDash extends Component {
   }
 
   uploadProduits = () => {
-    fetch("http://127.0.0.1:8000/api/products")
-      .then((res) => res.json())
+    Axios.get("/products")
       .then((result) => {
         let themes = [];
-        result.produits.filter((produit) => {
+        result.data.produits.filter((produit) => {
           if (produit.theme != null && produit.theme != "")
             themes.push({ text: produit.theme, value: produit.theme });
         });
         this.setState({
-          produits: result.produits,
+          produits: result.data.produits,
           themes: themes,
           isLoaded: true,
-          produitsFiltre: result.produits.filter((produit) => {
-            if (result.produits.indexOf(produit) < this.state.nbrToShow) {
+          produitsFiltre: result.data.produits.filter((produit) => {
+            if (result.data.produits.indexOf(produit) < this.state.nbrToShow) {
               return produit;
             }
           }),
         });
+      })
+      .catch((errors) => {
+        console.log("errors");
+        console.log(errors);
       });
   };
 
@@ -197,6 +200,7 @@ class ProduitsDash extends Component {
             return (
               <ProduitDash
                 key={produit.id}
+                imgPrefix = {this.props.imgPrefix}
                 produit={produit}
                 themes={this.state.themes}
                 changeProduit={this.handleChangeProduit}

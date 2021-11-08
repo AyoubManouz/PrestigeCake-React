@@ -74,6 +74,7 @@ class FacturesDash extends Component {
           {this.state.factures.map((facture) => {
             return (
               <FactureDash
+                imgPrefix = {this.props.imgPrefix}
                 key={facture.id}
                 facture={facture}
                 changeCommande={this.handleChangeCommande}

@@ -88,7 +88,7 @@ class CommandeTraking extends Component {
                               <div className="flex justify-center w-full">
                                 <img
                                   src={
-                                    "http://localhost:8000/" +
+                                    this.props.imgPrefix +
                                     produit.images[0].image_content
                                   }
                                   className="h-16"

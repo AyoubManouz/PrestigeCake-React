@@ -17,14 +17,17 @@ class PromotionsDash extends Component {
   }
 
   uploadPromotions = () => {
-    fetch("http://127.0.0.1:8000/api/products/create")
-      .then((res) => res.json())
-      .then((result) =>
+    Axios.get("/products/create")
+      .then((result) => {
         this.setState({
-          promotions: result.promotions,
+          promotions: result.data.promotions,
           isLoaded: true,
         })
-      );
+    })
+    .catch((errors) => {
+      console.log("errors");
+      console.log(errors);
+    });
   };
 
   componentWillMount() {
@@ -120,6 +123,7 @@ class PromotionsDash extends Component {
             return (
               <PromotionDash
                 key={promotion.id}
+                imgPrefix = {this.props.imgPrefix}
                 promotion={promotion}
                 changePromotion={this.handleChangePromo}
                 deletePromotion={this.handleDeletePromo}

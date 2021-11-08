@@ -22,6 +22,7 @@ class TopVentesProduits extends Component {
           {this.props.produits.map((produit) => {
             return (
               <Produit
+                imgPrefix = {this.props.imgPrefix}
                 key={produit.id}
                 produit={produit}
                 inCart={this.checkInCart(produit)}

@@ -14,10 +14,8 @@ class ProduitPage extends Component {
   }
 
   componentWillMount() {
-    let idProd = window.location.href.replace("http://localhost:3000/", "");
-    idProd = idProd.replace("products/", "");
-    idProd = idProd.replace("produit/", "");
-    idProd = idProd.replace("Produit/", "");
+    let location = window.location.href.split("/");
+    let idProd = location[location.length - 1];
     if (idProd === "") {
       window.location.href = "/";
     } else {
@@ -35,6 +33,7 @@ class ProduitPage extends Component {
     if (this.state.isLoaded) {
       return (
         <ProduitLoaded
+          imgPrefix = {this.props.imgPrefix}
           commande={this.props.commande}
           produit={this.state.produit}
           addProduitToCommande={this.props.addProduitToCommande}

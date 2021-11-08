@@ -11,7 +11,7 @@ class ProduitFacture extends Component {
         <div className="h-16 w-32 mx-2 flex items-center">
           <img
             src={
-              "http://localhost:8000/" +
+              this.props.imgPrefix +
               this.state.produit.images[0].image_content
             }
             className="h-12"

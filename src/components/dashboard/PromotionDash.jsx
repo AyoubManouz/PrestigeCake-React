@@ -72,6 +72,7 @@ class PromotionDash extends Component {
         <td>{this.state.promotion.dateFinPromo}</td>
         <td>
           <EditPromotion
+            imgPrefix = {this.props.imgPrefix}
             promotion={this.state.promotion}
             changePromotion={this.props.changePromotion}
           />

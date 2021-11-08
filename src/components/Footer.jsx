@@ -120,7 +120,7 @@ class Footer extends Component {
               <div>
                 <h1 className="font-serif text-lg text-left">
                   Tenez-vous informé(e) de l'actualité et des événements de
-                  Prestige Cake en vous abonnant à notre newsletter.
+                  Monde des Gateaux en vous abonnant à notre newsletter.
                 </h1>
               </div>
 
@@ -150,7 +150,7 @@ class Footer extends Component {
             <div className="grid md:grid-cols-4 grid-cols-2 py-7 text-left">
               <div>
                 <h1 className="font-serif text-third italic font-bold text-md mt-3">
-                  Prestige Cake
+                  Monde des Gateaux
                   <br />
                 </h1>
                 <div className="font-serif text-third text-sm">

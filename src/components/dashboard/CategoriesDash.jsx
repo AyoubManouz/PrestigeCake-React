@@ -16,15 +16,17 @@ class CategoriesDash extends Component {
   }
 
   uploadCategories = () => {
-    fetch("http://127.0.0.1:8000/api/products/create")
-      .then((res) => res.json())
+    Axios.get("/products/create")
       .then((result) => {
-        console.log(result.categories);
         this.setState({
-          categories: result.categories,
+          categories: result.data.categories,
           isLoaded: true,
         });
-      });
+        })
+        .catch((errors) => {
+          console.log("errors");
+          console.log(errors);
+        });
   };
 
   componentWillMount() {
@@ -126,6 +128,7 @@ class CategoriesDash extends Component {
           {this.state.categories.map((categorie) => {
             return (
               <CategorieDash
+                imgPrefix = {this.props.imgPrefix}
                 key={categorie.id}
                 categorie={categorie}
                 changecategorie={this.handleChangeCat}

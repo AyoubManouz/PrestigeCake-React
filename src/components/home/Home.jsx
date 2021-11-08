@@ -18,22 +18,23 @@ class Home extends Component {
   };
 
   uploadCategories = () => {
-    fetch("http://127.0.0.1:8000/api/products/create")
-      .then((res) => res.json())
+    Axios.get("/products/create")
       .then((result) => {
-        console.log(result.categories);
         this.setState({
-          categories: result.categories,
-          isCategoriesLoaded: true,
+          categories: result.data.categories,
+          isLoaded: true,
         });
-      });
+    })
+    .catch((errors) => {
+      console.log("errors");
+      console.log(errors);
+    });
   };
 
   uploadProduits = () => {
-    fetch("http://127.0.0.1:8000/api/products")
-      .then((res) => res.json())
+    Axios.get("/products")
       .then((result) => {
-        let topPromotions = result.produits.filter(
+        let topPromotions = result.data.produits.filter(
           (produit) => produit.promotion != null
         );
         topPromotions = topPromotions.filter(
@@ -43,73 +44,78 @@ class Home extends Component {
           topPromotions: topPromotions,
           isTopPromosionsLoaded: true,
         });
-      });
+    })
+    .catch((errors) => {
+      console.log("errors");
+      console.log(errors);
+    });
   };
 
   uploadCommandes = () => {
-    fetch("http://127.0.0.1:8000/api/basket")
-      .then((res) => res.json())
-      .then((result) => {
-        console.log("result = ");
-        console.log(result);
-        let commandes = result.commandes.filter(
-          (commande) => commande.etat != "in_basket"
+    Axios.get("/basket")
+    .then((result) => {
+      let commandes = result.data.commandes.filter(
+        (commande) => commande.etat != "in_basket"
+      );
+
+      let produits = [];
+      for (let i = 0; i < commandes.length; i++) {
+        for (let j = 0; j < commandes[i].produits.length; j++) {
+          produits.push(commandes[i].produits[j]);
+        }
+      }
+
+      console.log("produits = ");
+      console.log(produits);
+
+      let maps = [];
+
+      for (let i = 0; i < produits.length; i++) {
+        let map = {};
+        let count = produits.filter(
+          (produit) => produit.id === produits[i].id
+        ).length;
+        map["id"] = produits[i].id;
+        map["count"] = count;
+        let exist = false;
+        for (let j = 0; j < maps.length; j++) {
+          if (maps[j].id === map.id) {
+            exist = true;
+            break;
+          }
+        }
+        if (!exist) {
+          maps.push(map);
+        }
+      }
+
+      console.log("maps = ");
+      console.log(maps);
+
+      maps.sort((a, b) => b.count - a.count);
+
+      console.log("maps = ");
+      console.log(maps);
+
+      let topVentes = [];
+      for (let i = 0; i < maps.length && i < 6; i++) {
+        topVentes.push(
+          produits.filter((produit) => produit.id === maps[i].id)[0]
         );
+      }
 
-        let produits = [];
-        for (let i = 0; i < commandes.length; i++) {
-          for (let j = 0; j < commandes[i].produits.length; j++) {
-            produits.push(commandes[i].produits[j]);
-          }
-        }
+      console.log("topVentes = ");
+      console.log(topVentes);
 
-        console.log("produits = ");
-        console.log(produits);
-
-        let maps = [];
-
-        for (let i = 0; i < produits.length; i++) {
-          let map = {};
-          let count = produits.filter(
-            (produit) => produit.id === produits[i].id
-          ).length;
-          map["id"] = produits[i].id;
-          map["count"] = count;
-          let exist = false;
-          for (let j = 0; j < maps.length; j++) {
-            if (maps[j].id === map.id) {
-              exist = true;
-              break;
-            }
-          }
-          if (!exist) {
-            maps.push(map);
-          }
-        }
-
-        console.log("maps = ");
-        console.log(maps);
-
-        maps.sort((a, b) => b.count - a.count);
-
-        console.log("maps = ");
-        console.log(maps);
-
-        let topVentes = [];
-        for (let i = 0; i < maps.length && i < 6; i++) {
-          topVentes.push(
-            produits.filter((produit) => produit.id === maps[i].id)[0]
-          );
-        }
-
-        console.log("topVentes = ");
-        console.log(topVentes);
-
-        this.setState({
-          topVentes: topVentes,
-          isTopVentesLoaded: true,
-        });
+      this.setState({
+        topVentes: topVentes,
+        isTopVentesLoaded: true,
       });
+    })
+    .catch((errors) => {
+      console.log("errors");
+      console.log(errors);
+    });
   };
 
   componentWillMount() {
@@ -123,6 +129,7 @@ class Home extends Component {
       return (
         <TopPromotions
           produits={this.state.topPromotions}
+          imgPrefix = {this.props.imgPrefix}
           addProduitToCommande={this.props.addProduitToCommande}
           removeProduitFromCommande={this.props.removeProduitFromCommande}
           produitsCommande={this.props.commande.produits}
@@ -142,6 +149,7 @@ class Home extends Component {
       return (
         <TopVentes
           produits={this.state.topVentes}
+          imgPrefix = {this.props.imgPrefix}
           addProduitToCommande={this.props.addProduitToCommande}
           removeProduitFromCommande={this.props.removeProduitFromCommande}
           produitsCommande={this.props.commande.produits}
@@ -159,8 +167,8 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <UpperHomeBanner />
-        <Indesponsable />
+        <UpperHomeBanner imgPrefix = {this.props.imgPrefix} />
+        <Indesponsable imgPrefix = {this.props.imgPrefix} />
         <div className="w-full">
           <img src={forkCake} className="w-full object-cover" alt="" />
         </div>

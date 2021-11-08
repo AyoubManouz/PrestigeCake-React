@@ -56,7 +56,7 @@ class Facture extends Component {
             <div className="border-b-4 font-bold text-primary italic border-primary my-3 text-lg px-4 py-1">
               Produits
             </div>
-            <ProduitsFacture produits={this.state.produits} />
+            <ProduitsFacture imgPrefix = {this.props.imgPrefix} produits={this.state.produits} />
           </div>
           <div className="lg:col-span-3 p-5">
             <TotalFacture

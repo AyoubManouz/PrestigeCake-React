@@ -11,7 +11,7 @@ class ProduitsFacture extends Component {
     return (
       <div>
         {this.state.produits.map((produit) => {
-          return <ProduitFacture key={produit.id} produit={produit} />;
+          return <ProduitFacture key={produit.id} imgPrefix = {this.props.imgPrefix} produit={produit} />;
         })}
       </div>
     );
